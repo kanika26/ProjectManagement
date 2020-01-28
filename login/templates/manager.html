@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="#" class="nav-link">Welcome:{{request.session.username}}</a></li>&nbsp;&nbsp;
+
+
+<h1>Welcome to manager panel!</h1><li><a href="http://localhost:8000/logout/"><span class="glyphicon glyphicon-user"></span> logout &nbsp;{{ request.session.username }}!</a>
+
+
+
+<a style="cursor:pointer;" onclick="myFunction()">View All Projects</a>
+<a style="cursor:pointer;" onclick="myFunction1()">Add Project</a>
+
+<div id="myDIV">
+<table class="table table-striped">
+<thead>
+<tr>
+    <th scope="col">S.No</th>
+    <th scope="col">Project Name</th>
+    <th scope="col">Client Name</th>
+    <th scope="col">Status</th>
+
+</tr>
+</thead>
+    {% for i in obj %}
+<tbody>
+<tr>
+    <td>{{i.Pid}}</td>
+    <td>{{i.Pname}}</td>
+    <td>{{i.Cname}}</td>
+    <td>{{i.Pstatus}}</td>
+    <td><a href="http://localhost:8000/viewprojectdetails?id={{i.Pid}}" class="btn btn-primary">View Details</a></td>
+
+</tr>
+
+</tbody>
+
+{% endfor %}
+</table>
+
+</div>
+
+<form method="POST"> {% csrf_token %}
+
+<div id="myDIV1" class="container">
+{{ fProject.as_p}}
+
+    <input type="submit" value="Submit">
+
+</div>
+
+</form>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myDIV");
+  var y = document.getElementById("myDIV1");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    y.style.display = "none";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+<script>
+function myFunction1() {
+  var y = document.getElementById("myDIV1");
+  var x = document.getElementById("myDIV");
+  if (y.style.display === "none") {
+    y.style.display = "block";
+    x.style.display = "none";
+  } else {
+    y.style.display = "none";
+  }
+}
+</script>
+
+
+<style>
+#myDIV {
+  width: 100%;
+  padding: 50px 0;
+  text-align: center;
+  background-color: lightblue;
+  margin-top: 20px;
+  display:none;
+}
+#myDIV1 {
+ width: 100%;
+  padding: 50px 0;
+  text-align: center;
+  background-color: lightblue;
+  margin-top: 20px;
+  display:none;
+}
+
+
+</style>
+
+
+
+
+
+</body>
+</html>

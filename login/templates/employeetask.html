@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>My Tasks</h1>
+<div class="container">
+
+
+<table class="table table-striped">
+
+
+  <thead>
+    <tr>
+      <th scope="col">S.No</th>
+      <th scope="col">Project Name</th>
+        <th scope="col">Task title</th>
+
+</tr>
+
+  </thead>
+
+
+
+
+{% for i in obj %}
+
+   <p>Title: {{i.Ttitle}} </p>
+     <p>Assigned date: {{i.Tassigneddate}} </p>
+     <p>Deadline: {{i.Tdeadline}} </p>
+
+    {% endfor %}
+
+
+</body>
+</html>
